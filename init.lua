@@ -33,6 +33,7 @@ require('packer').startup(function()
   use 'lewis6991/gitsigns.nvim'
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/nvim-compe'
+  use 'neoclide/coc.nvim'
 end)
 
 --Incremental live completion
