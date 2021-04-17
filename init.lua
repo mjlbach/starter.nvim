@@ -16,23 +16,26 @@ vim.api.nvim_exec([[
 
 local use = require('packer').use
 require('packer').startup(function()
-  use 'wbthomason/packer.nvim'
-  use 'tpope/vim-vinegar'
-  use 'tpope/vim-surround'
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-rhubarb'
-  use 'tpope/vim-repeat'
-  use 'tpope/vim-sleuth'
-  use 'tpope/vim-commentary'
-  use 'ludovicchabant/vim-gutentags'
+  use 'wbthomason/packer.nvim'       -- Package manager
+  use 'tpope/vim-vinegar'            -- File browser (netrw) improvements
+  use 'tpope/vim-surround'           -- "Surround text with" actions
+  use 'tpope/vim-fugitive'           -- Git commands in nvim
+  use 'tpope/vim-rhubarb'            -- Fugitive-companion to interact with github
+  use 'tpope/vim-repeat'             -- More exhaustive '.'-repeats
+  use 'tpope/vim-sleuth'             -- Detects and sets indentation settings from the current file
+  use 'tpope/vim-commentary'         -- "gc" to comment visual regions/lines
+  use 'ludovicchabant/vim-gutentags' -- Automatic tags management
+  -- UI to select things (files, grep results, open buffers...)
   use {'nvim-telescope/telescope.nvim', requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}} }
-  use 'joshdick/onedark.vim'
-  use 'itchyny/lightline.vim'
+  use 'joshdick/onedark.vim'         -- Theme inspired by Atom
+  use 'itchyny/lightline.vim'        -- Fancier statusline
+  -- Add indentation guides even on blank lines
   use { 'lukas-reineke/indent-blankline.nvim', branch="lua" }
-  use 'sheerun/vim-polyglot'
-  use 'lewis6991/gitsigns.nvim'
-  use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/nvim-compe'
+  use 'sheerun/vim-polyglot'         -- Collection of sensible settings for various languages
+  -- Add git related info in the signs columns and popups
+  use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'} }
+  use 'neovim/nvim-lspconfig'        -- Collection of configurations for built-in LSP client
+  use 'hrsh7th/nvim-compe'           -- Autocompletion plugin
 end)
 
 --Incremental live completion
