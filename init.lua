@@ -110,8 +110,8 @@ vim.o.pastetoggle="<F3>"
 
 --Map blankline
 vim.g.indent_blankline_char = "┊"
-vim.g.indent_blankline_filetype_exclude = { 'help' }
-vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile', 'packer'}
+vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
+vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile'}
 vim.g.indent_blankline_char_highlight = 'LineNr'
 
 -- Toggle to disable mouse mode and indentlines for easier paste
