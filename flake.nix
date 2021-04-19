@@ -1,5 +1,5 @@
 {
-  description = "my project description";
+  description = "A small, featureful neovim template.";
 
   inputs.flake-utils.url = "github:numtide/flake-utils";
   inputs.neovim-nightly-overlay.url = "github:nix-community/neovim-nightly-overlay";
