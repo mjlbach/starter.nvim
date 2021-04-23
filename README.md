@@ -17,9 +17,9 @@ File or comment on an open issue if you feel strongly these should not be includ
 
 See the [wiki](https://github.com/mjlbach/defaults.nvim/wiki) for additional tips, tricks, and recommended plugins (open to community contribution).
 
-### Running via nix
+### Running via nix (optional)
 
-Nix is a purely functional package manager, that affords reproducibility similar to a container (albeit with a very different mechanism). This repo bundles a nix-shell, which includes the latest version of neovim, along with several language servers.
+Nix is a purely functional package manager, that affords reproducibility similar to a container (albeit with a very different mechanism). This repo bundles a nix-shell, which includes the latest version of neovim, along with several language servers. This is entirely optional, and is (in this case) just a convenient way to install/manage language-servers and other tools (fd, ripgrep, etc.).
 
 1. Install nix
 ```bash
