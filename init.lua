@@ -59,7 +59,6 @@ vim.cmd[[set undofile]]
 vim.o.backup = true
 -- Backupcopy doesn't delete the files, see here: https://vi.stackexchange.com/a/25040
 vim.o.backupcopy = 'yes'
-vim.o.backupdir = fn.expand(fn.stdpath('data') .. '/backup//')
 vim.o.undofile = true
 vim.o.undodir = fn.expand(fn.stdpath('data') .. '/undo//')
 
