@@ -55,7 +55,7 @@ vim.o.breakindent = true
 --Save undo history
 vim.cmd[[set undofile]]
 
--- Backups and undo files
+-- Backup
 vim.o.backup = true
 
 --Case insensitive searching UNLESS /C or capital in search
