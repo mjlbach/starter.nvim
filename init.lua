@@ -55,7 +55,7 @@ vim.o.breakindent = true
 --Save undo history
 vim.cmd[[set undofile]]
 
--- Backups and swap files
+-- Backups and undo files
 vim.o.backup = true
 -- Backupcopy doesn't delete the files, see here: https://vi.stackexchange.com/a/25040
 vim.o.backupcopy = 'yes'
