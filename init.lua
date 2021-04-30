@@ -56,9 +56,6 @@ vim.o.breakindent = true
 vim.cmd[[set undofile]]
 
 -- Backups and swap files
-vim.o.swapfile = true
--- Folder for swap files
-vim.o.directory = fn.expand(fn.stdpath('data') .. '/swap//')
 vim.o.backup = true
 -- Backupcopy doesn't delete the files, see here: https://vi.stackexchange.com/a/25040
 vim.o.backupcopy = 'yes'
