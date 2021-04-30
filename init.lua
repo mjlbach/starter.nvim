@@ -57,8 +57,6 @@ vim.cmd[[set undofile]]
 
 -- Backups and undo files
 vim.o.backup = true
-vim.o.backupcopy = 'yes'
-
 
 --Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
