@@ -63,7 +63,6 @@ vim.o.backupdir = fn.expand(fn.stdpath('data') .. '/backup//')
 vim.o.undofile = true
 vim.o.undodir = fn.expand(fn.stdpath('data') .. '/undo//')
 
-if fn.isdirectory(vim.o.directory) == 0 then fn.mkdir(vim.o.directory, 'p') end
 if fn.isdirectory(vim.o.backupdir) == 0 then fn.mkdir(vim.o.backupdir, 'p') end
 if fn.isdirectory(vim.o.undodir) == 0 then fn.mkdir(vim.o.undodir, 'p') end
 
