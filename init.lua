@@ -56,19 +56,19 @@ vim.o.breakindent = true
 vim.cmd[[set undofile]]
 
 -- Backups and swap files
-o.swapfile = true
+vim.o.swapfile = true
 -- Folder for swap files
-o.directory = fn.expand(fn.stdpath('data') .. '/swap//')
-o.backup = true
+vim.o.directory = fn.expand(fn.stdpath('data') .. '/swap//')
+vim.o.backup = true
 -- Backupcopy doesn't delete the files, see here: https://vi.stackexchange.com/a/25040
-o.backupcopy = 'yes'
-o.backupdir = fn.expand(fn.stdpath('data') .. '/backup//')
-o.undofile = true
-o.undodir = fn.expand(fn.stdpath('data') .. '/undo//')
+vim.o.backupcopy = 'yes'
+vim.o.backupdir = fn.expand(fn.stdpath('data') .. '/backup//')
+vim.o.undofile = true
+vim.o.undodir = fn.expand(fn.stdpath('data') .. '/undo//')
 
-if fn.isdirectory(o.directory) == 0 then fn.mkdir(o.directory, 'p') end
-if fn.isdirectory(o.backupdir) == 0 then fn.mkdir(o.backupdir, 'p') end
-if fn.isdirectory(o.undodir) == 0 then fn.mkdir(o.undodir, 'p') end
+if fn.isdirectory(vim.o.directory) == 0 then fn.mkdir(vim.o.directory, 'p') end
+if fn.isdirectory(vim.o.backupdir) == 0 then fn.mkdir(vim.o.backupdir, 'p') end
+if fn.isdirectory(vim.o.undodir) == 0 then fn.mkdir(vim.o.undodir, 'p') end
 
 --Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
