@@ -238,15 +238,7 @@ require'compe'.setup {
 
   source = {
     path = true;
-    buffer = false;
-    calc = true;
-    vsnip = false;
     nvim_lsp = true;
-    nvim_lua = true;
-    spell = true;
-    tags = false;
-    snippets_nvim = true;
-    treesitter = true;
   };
 }
 
