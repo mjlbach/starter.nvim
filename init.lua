@@ -26,7 +26,7 @@ require('packer').startup(function()
   use 'joshdick/onedark.vim'         -- Theme inspired by Atom
   use 'itchyny/lightline.vim'        -- Fancier statusline
   -- Add indentation guides even on blank lines
-  use { 'lukas-reineke/indent-blankline.nvim', branch="lua" }
+  use 'lukas-reineke/indent-blankline.nvim'
   -- Add git related info in the signs columns and popups
   use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'} }
   use 'neovim/nvim-lspconfig'        -- Collection of configurations for built-in LSP client
