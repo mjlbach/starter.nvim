@@ -31,6 +31,7 @@ require('packer').startup(function()
   use {'lewis6991/gitsigns.nvim', requires = {'nvim-lua/plenary.nvim'} }
   use 'neovim/nvim-lspconfig'        -- Collection of configurations for built-in LSP client
   use 'hrsh7th/nvim-compe'           -- Autocompletion plugin
+  use 'L3MON4D3/LuaSnip'             -- Snippets plugin
 end)
 
 --Incremental live completion
@@ -154,7 +155,7 @@ vim.api.nvim_exec([[
 
 -- Y yank until the end of line
 vim.api.nvim_set_keymap('n', 'Y', 'y$', { noremap = true})
---
+
 -- LSP settings
 local nvim_lsp = require('lspconfig')
 local on_attach = function(_client, bufnr)
@@ -179,10 +180,16 @@ local on_attach = function(_client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 -- Enable the following language servers
 local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup { on_attach = on_attach }
+  nvim_lsp[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
 end
 
 local sumneko_root_path = vim.fn.getenv("HOME").."/.local/bin/sumneko_lua" -- Change to your sumneko root installation
@@ -190,6 +197,7 @@ local sumneko_binary_path = "/bin/linux/lua-language-server" -- Change to your O
 nvim_lsp.sumneko_lua.setup {
   cmd = {sumneko_root_path .. sumneko_binary_path, "-E", sumneko_root_path.."/main.lua" };
   on_attach = on_attach,
+  capabilities = capbilities,
   settings = {
       Lua = {
           runtime = {
@@ -219,7 +227,6 @@ vim.o.completeopt="menuone,noinsert"
 require'compe'.setup {
   enabled = true;
   autocomplete = true;
-  debug = false;
   min_length = 1;
   preselect = 'enable';
   throttle_time = 80;
@@ -233,9 +240,11 @@ require'compe'.setup {
   source = {
     path = true;
     nvim_lsp = true;
+    luasnip = true;
   };
 }
 
+-- Utility functions for compe and luasnip
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -252,24 +261,36 @@ end
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone
 --- jump to prev/next snippet's placeholder
+local luasnip = require('luasnip')
+
 _G.tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-n>"
-  elseif check_back_space() then
-    return t "<Tab>"
-  else
-    return vim.fn['compe#complete']()
-  end
-end
-_G.s_tab_complete = function()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  else
-    return t "<S-Tab>"
-  end
+    if vim.fn.pumvisible() == 1 then
+        return t "<C-n>"
+    elseif luasnip.expand_or_jumpable() then
+        return t "<Plug>luasnip-expand-or-jump"
+    elseif check_back_space() then
+        return t "<Tab>"
+    else
+        return vim.fn['compe#complete']()
+    end
 end
 
+_G.s_tab_complete = function()
+    if vim.fn.pumvisible() == 1 then
+        return t "<C-p>"
+    elseif luasnip.jumpable(-1) then
+        return t "<Plug>luasnip-jump-prev"
+    else
+        return t "<S-Tab>"
+    end
+end
+
+-- Map tab to the above tab complete functiones
 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+-- Map compe confirm and complete functions
+vim.api.nvim_set_keymap('i', '<cr>',        'compe#confirm("<cr>")', {expr=true})
+vim.api.nvim_set_keymap('i', '<c-space>',   'compe#complete()', {expr=true})
