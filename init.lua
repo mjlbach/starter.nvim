@@ -197,9 +197,6 @@ require'lspconfig'.sumneko_lua.setup {
   },
 }
 
--- Map :Format to vim.lsp.buf.formatting()
-vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
-
 -- Set completeopt to have a better completion experience
 vim.o.completeopt="menuone,noinsert"
 
