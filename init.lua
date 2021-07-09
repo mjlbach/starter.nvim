@@ -83,36 +83,11 @@ vim.g.maplocalleader = " "
 vim.api.nvim_set_keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { noremap=true, expr = true, silent = true})
 vim.api.nvim_set_keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", {noremap= true, expr = true, silent = true})
 
---Remap escape to leave terminal mode
-vim.api.nvim_set_keymap('t', '<Esc>', [[<c-\><c-n>]], {noremap = true})
-
---Add map to enter paste mode
-vim.o.pastetoggle="<F3>"
-
 --Map blankline
 vim.g.indent_blankline_char = "┊"
 vim.g.indent_blankline_filetype_exclude = { 'help', 'packer' }
 vim.g.indent_blankline_buftype_exclude = { 'terminal', 'nofile'}
 vim.g.indent_blankline_char_highlight = 'LineNr'
-
--- Toggle to disable mouse mode and indentlines for easier paste
-ToggleMouse = function()
-  if vim.o.mouse == 'a' then
-    vim.cmd[[IndentBlanklineDisable]]
-    vim.wo.signcolumn='no'
-    vim.o.mouse = 'v'
-    vim.wo.number = false
-    print("Mouse disabled")
-  else
-    vim.cmd[[IndentBlanklineEnable]]
-    vim.wo.signcolumn='yes'
-    vim.o.mouse = 'a'
-    vim.wo.number = true
-    print("Mouse enabled")
-  end
-end
-
-vim.api.nvim_set_keymap('n', '<F10>', '<cmd>lua ToggleMouse()<cr>', { noremap = true })
 
 -- Telescope
 require('telescope').setup {
@@ -123,8 +98,6 @@ require('telescope').setup {
         ["<C-d>"] = false,
       },
     },
-    generic_sorter =  require'telescope.sorters'.get_fzy_sorter,
-    file_sorter =  require'telescope.sorters'.get_fzy_sorter,
   }
 }
 --Add leader shortcuts
@@ -140,9 +113,6 @@ vim.api.nvim_set_keymap('n', '<leader>gc', [[<cmd>lua require('telescope.builtin
 vim.api.nvim_set_keymap('n', '<leader>gb', [[<cmd>lua require('telescope.builtin').git_branches()<cr>]], { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>gs', [[<cmd>lua require('telescope.builtin').git_status()<cr>]], { noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<leader>gp', [[<cmd>lua require('telescope.builtin').git_bcommits()<cr>]], { noremap = true, silent = true})
-
--- Change preview window location
-vim.g.splitbelow = true
 
 -- Highlight on yank
 vim.api.nvim_exec([[
@@ -177,6 +147,7 @@ local on_attach = function(_client, bufnr)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
+  vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
