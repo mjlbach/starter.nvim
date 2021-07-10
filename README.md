@@ -6,12 +6,7 @@ A starting point for neovim that is:
 * Single-file
 * Documented
 
-This repo is meant to be used as a starting point for a user's own configuration. Some things you may want to remove (in rough decreasing order of controversy):
-
-* vim-gutentags					   -- Automatic tags management (not every language server supports workspace symbols, ctags is extremely fast and works well for polyglot projects)
-* Utility functions        -- There are a couple custom functions (disabling indent lines for copy/paste)
-* Default language servers -- rust-analyzer, clangd, tsserver, and pyright are enabled by default
-* Key bindings					   -- There are approximately 40 custom keybinding
+This repo is meant to be used as a starting point for a user's own configuration; remove the things you don't use and add what you miss.
 
 See the [wiki](https://github.com/mjlbach/defaults.nvim/wiki) for additional tips, tricks, and recommended plugins.
 
