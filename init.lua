@@ -281,7 +281,7 @@ require('compe').setup {
     path = true,
     nvim_lsp = true,
     luasnip = true,
-    buffer = true,
+    buffer = false,
     calc = false,
     nvim_lua = false,
     vsnip = false,
