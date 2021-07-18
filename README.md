@@ -12,7 +12,7 @@ See the [wiki](https://github.com/mjlbach/defaults.nvim/wiki) for additional tip
 
 ### Installation
 * Backup your previous configuration
-* Copy and paste the init.lua lua into `$HOME/.config/nvim/init.lua`
+* Copy and paste the defaults.nvim `init.lua` into `$HOME/.config/nvim/init.lua`
 * start neovim (`nvim`) and run `:PackerInstall`, ignore any error message about missing plugins, `:PackerInstall` will fix that shortly.
 * restart neovim
 
