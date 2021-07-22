@@ -273,7 +273,7 @@ require('nvim-treesitter.configs').setup {
 }
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noinsert'
+vim.o.completeopt = 'menuone,noselect'
 
 -- Compe setup
 require('compe').setup {
