@@ -43,5 +43,6 @@ Pull-requests are welcome. The goal of this repo is not to create a neovim confi
 * Automatic management of language server installation (for that, there is the nix shell)
 * Custom language server configuration (efm templates)
 * Theming beyond a default colorscheme necessary for LSP highlight groups
+* lazy-loading is an anti-pattern (IMO), and frequently breaks plugins. Defaults.nvim should start within 50 ms on modern hardware. Contribute to upstream plugins to optimize startup time instead.
 
 Each PR, especially those which increase the line count, should have a description as to why the PR is necessary.
