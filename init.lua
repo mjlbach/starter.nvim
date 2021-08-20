@@ -58,7 +58,7 @@ vim.o.mouse = 'a'
 vim.o.breakindent = true
 
 --Save undo history
-vim.cmd [[set undofile]]
+vim.opt.undofile = true
 
 --Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
