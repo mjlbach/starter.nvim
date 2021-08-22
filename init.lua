@@ -337,6 +337,3 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-
--- Set up lsp completion for nvim-cmp
-require('cmp_nvim_lsp').setup {}
