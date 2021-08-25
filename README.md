@@ -2,9 +2,10 @@
 
 A starting point for neovim that is:
 
-* Small (~ 350 lines)
+* Small (~325 lines)
 * Single-file
 * Documented
+* Modular
 
 This repo is meant to be used as a starting point for a user's own configuration; remove the things you don't use and add what you miss.
 
