@@ -9,11 +9,11 @@ A starting point for neovim that is:
 
 This repo is meant to be used as a starting point for a user's own configuration; remove the things you don't use and add what you miss. This configuration serves as the reference configuration for the [lspconfig wiki](https://github.com/neovim/nvim-lspconfig/wiki).
 
-See the [wiki](https://github.com/mjlbach/defaults.nvim/wiki) for additional tips, tricks, and recommended plugins.
+See the [wiki](https://github.com/nvim-lua/kickstart.nvim/wiki) for additional tips, tricks, and recommended plugins.
 
 ### Installation
 * Backup your previous configuration
-* Copy and paste the defaults.nvim `init.lua` into `$HOME/.config/nvim/init.lua`
+* Copy and paste the kickstart.nvim `init.lua` into `$HOME/.config/nvim/init.lua`
 * start neovim (`nvim`) and run `:PackerInstall`, ignore any error message about missing plugins, `:PackerInstall` will fix that shortly.
 * restart neovim
 
