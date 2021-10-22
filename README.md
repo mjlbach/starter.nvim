@@ -28,7 +28,7 @@ $ sh <(curl -L https://nixos.org/nix/install) --daemon
 
 2. Clone this repository:
 ```bash
-$ git clone https://github.com/mjlbach/defaults.nvim.git && cd defaults.nvim
+$ git clone https://github.com/nvim-lua/kickstart.nvim.git && cd kickstart.nvim
 ```
 
 3. Start the shell
@@ -39,11 +39,11 @@ $ nix develop # if on nixUnstable
 
 ### Contribution
 
-Pull-requests are welcome. The goal of this repo is not to create a neovim configuration framework, but to offer a starting template which instructs users on the available features. Some things that will not be included:
+Pull-requests are welcome. The goal of this repo is not to create a neovim configuration framework, but to offer a starting template shows, by example, available features in neovim. Some things that will not be included:
 
-* Automatic management of language server installation (for that, there is the nix shell)
-* Custom language server configuration (efm templates)
+* Automatic management of language server installation
+* Custom language server configuration (null-ls templates)
 * Theming beyond a default colorscheme necessary for LSP highlight groups
-* lazy-loading is an anti-pattern (IMO), and frequently breaks plugins. Defaults.nvim should start within 50 ms on modern hardware. Contribute to upstream plugins to optimize startup time instead.
+* Lazy-loading. Kickstart.nvim should start within 50 ms on modern hardware. Please profile and contribute to upstream plugins to optimize startup time instead.
 
 Each PR, especially those which increase the line count, should have a description as to why the PR is necessary.
