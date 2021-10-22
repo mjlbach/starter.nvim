@@ -7,7 +7,7 @@ A starting point for neovim that is:
 * Documented
 * Modular
 
-This repo is meant to be used as a starting point for a user's own configuration; remove the things you don't use and add what you miss.
+This repo is meant to be used as a starting point for a user's own configuration; remove the things you don't use and add what you miss. This configuration serves as the reference configuration for the [lspconfig wiki](https://github.com/neovim/nvim-lspconfig/wiki).
 
 See the [wiki](https://github.com/mjlbach/defaults.nvim/wiki) for additional tips, tricks, and recommended plugins.
 
