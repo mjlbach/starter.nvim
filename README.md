@@ -39,7 +39,7 @@ $ nix develop # if on nixUnstable
 
 ### Contribution
 
-Pull-requests are welcome. The goal of this repo is not to create a neovim configuration framework, but to offer a starting template shows, by example, available features in neovim. Some things that will not be included:
+Pull-requests are welcome. The goal of this repo is not to create a neovim configuration framework, but to offer a starting template that shows, by example, available features in neovim. Some things that will not be included:
 
 * Automatic management of language server installation
 * Custom language server configuration (null-ls templates)
