@@ -66,6 +66,9 @@ vim.o.termguicolors = true
 vim.g.onedark_terminal_italics = 2
 vim.cmd [[colorscheme onedark]]
 
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect'
+
 --Set statusbar
 vim.g.lightline = {
   colorscheme = 'onedark',
@@ -252,9 +255,6 @@ lspconfig.sumneko_lua.setup {
     },
   },
 }
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
 
 -- luasnip setup
 local luasnip = require 'luasnip'
