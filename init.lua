@@ -21,7 +21,7 @@ require('packer').startup(function()
   use 'ludovicchabant/vim-gutentags' -- Automatic tags management
   -- UI to select things (files, grep results, open buffers...)
   use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-  use 'joshdick/onedark.vim' -- Theme inspired by Atom
+  use 'mjlbach/onedark.nvim' -- Theme inspired by Atom
   use 'itchyny/lightline.vim' -- Fancier statusline
   -- Add indentation guides even on blank lines
   use 'lukas-reineke/indent-blankline.nvim'
@@ -61,9 +61,8 @@ vim.o.smartcase = true
 vim.o.updatetime = 250
 vim.wo.signcolumn = 'yes'
 
---Set colorscheme (order is important here)
+--Set colorscheme
 vim.o.termguicolors = true
-vim.g.onedark_terminal_italics = 2
 vim.cmd [[colorscheme onedark]]
 
 -- Set completeopt to have a better completion experience
@@ -102,11 +101,11 @@ vim.g.indent_blankline_show_trailing_blankline_indent = false
 -- Gitsigns
 require('gitsigns').setup {
   signs = {
-    add = { hl = 'GitGutterAdd', text = '+' },
-    change = { hl = 'GitGutterChange', text = '~' },
-    delete = { hl = 'GitGutterDelete', text = '_' },
-    topdelete = { hl = 'GitGutterDelete', text = '‾' },
-    changedelete = { hl = 'GitGutterChange', text = '~' },
+    add = { text = '+' },
+    change = { text = '~' },
+    delete = { text = '_' },
+    topdelete = { text = '‾' },
+    changedelete = { text = '~' },
   },
 }
 
