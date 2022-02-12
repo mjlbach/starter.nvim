@@ -1,5 +1,22 @@
--- Install packer
-local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
+-- Bootstrap in tmp
+local on_windows = vim.loop.os_uname().version:match 'Windows'
+
+local function join_paths(...)
+  local path_sep = on_windows and '\\' or '/'
+  local result = table.concat({ ... }, path_sep)
+  return result
+end
+
+vim.cmd [[set runtimepath=$VIMRUNTIME]]
+
+local temp_dir = vim.loop.os_getenv 'TEMP' or '/tmp'
+
+vim.cmd('set packpath=' .. join_paths(temp_dir, 'nvim', 'site'))
+
+local package_root = join_paths(temp_dir, 'nvim', 'site', 'pack')
+local install_path = join_paths(package_root, 'packer', 'start', 'packer.nvim')
+local compile_path = join_paths(install_path, 'plugin', 'packer_compiled.lua')
+
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
   vim.fn.execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
@@ -12,32 +29,33 @@ vim.cmd [[
   augroup end
 ]]
 
-local use = require('packer').use
-require('packer').startup(function()
-  use 'wbthomason/packer.nvim' -- Package manager
-  use 'tpope/vim-fugitive' -- Git commands in nvim
-  use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
-  use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
-  use 'ludovicchabant/vim-gutentags' -- Automatic tags management
-  -- UI to select things (files, grep results, open buffers...)
-  use { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-  use 'mjlbach/onedark.nvim' -- Theme inspired by Atom
-  use 'nvim-lualine/lualine.nvim' -- Fancier statusline
-  -- Add indentation guides even on blank lines
-  use 'lukas-reineke/indent-blankline.nvim'
-  -- Add git related info in the signs columns and popups
-  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
-  -- Highlight, edit, and navigate code using a fast incremental parsing library
-  use 'nvim-treesitter/nvim-treesitter'
-  -- Additional textobjects for treesitter
-  use 'nvim-treesitter/nvim-treesitter-textobjects'
-  use 'neovim/nvim-lspconfig' -- Collection of configurations for built-in LSP client
-  use 'hrsh7th/nvim-cmp' -- Autocompletion plugin
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'saadparwaiz1/cmp_luasnip'
-  use 'L3MON4D3/LuaSnip' -- Snippets plugin
-end)
+require('packer').startup({
+  {
+    'wbthomason/packer.nvim',
+    'tpope/vim-fugitive',
+    'tpope/vim-rhubarb',
+    'numToStr/Comment.nvim',
+    'ludovicchabant/vim-gutentags',
+    { 'nvim-telescope/telescope.nvim', requires = { 'nvim-lua/plenary.nvim' } },
+    {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+    'mjlbach/onedark.nvim',
+    'nvim-lualine/lualine.nvim',
+    'lukas-reineke/indent-blankline.nvim',
+    { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } },
+    'nvim-treesitter/nvim-treesitter',
+    'nvim-treesitter/nvim-treesitter-textobjects',
+    'neovim/nvim-lspconfig',
+    'hrsh7th/nvim-cmp',
+    'hrsh7th/cmp-nvim-lsp',
+    'saadparwaiz1/cmp_luasnip',
+    'L3MON4D3/LuaSnip',
+  },
+    config = {
+      package_root = package_root,
+      compile_path = compile_path,
+    }
+  }
+)
 
 --Set highlight on search
 vim.o.hlsearch = false
@@ -226,7 +244,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
 
 -- Enable the following language servers
-local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver' }
+local servers = { 'clangd', 'rust_analyzer', 'pyright', 'tsserver', 'csharp_ls' }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
