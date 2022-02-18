@@ -12,8 +12,7 @@ vim.cmd [[
   augroup end
 ]]
 
-local use = require('packer').use
-require('packer').startup(function()
+require('packer').startup(function(use)
   use 'wbthomason/packer.nvim' -- Package manager
   use 'tpope/vim-fugitive' -- Git commands in nvim
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
