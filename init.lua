@@ -1,3 +1,6 @@
+-- Lua Caching
+pcall(require, 'impatient')
+
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
 
@@ -13,6 +16,7 @@ vim.cmd [[
 ]]
 
 require('packer').startup(function(use)
+  use 'lewis6991/impatient.nvim' -- Improve startup time
   use 'wbthomason/packer.nvim' -- Package manager
   use 'tpope/vim-fugitive' -- Git commands in nvim
   use 'tpope/vim-rhubarb' -- Fugitive-companion to interact with github
