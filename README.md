@@ -7,9 +7,9 @@ A starting point for neovim that is:
 * Documented
 * Modular
 
-Starter targets *only* the latest stable neovim release (0.7) and the nightly.
+Starter targets *only* the latest stable neovim release (0.8.3) and the nightly.
 
-This repo is meant to be used as a starting point for a user's own configuration; remove the things you don't use and add what you miss. This configuration serves as the reference configuration for the [lspconfig wiki](https://github.com/neovim/nvim-lspconfig/wiki).
+This repo is meant to be used as a starting point for a user's own configuration; remove the things you don't use and add what you miss.
 
 See the [wiki](https://github.com/mjlbach/starter.nvim/wiki) for additional tips, tricks, and recommended plugins.
 
