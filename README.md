@@ -24,6 +24,6 @@ Pull-requests are welcome. The goal of this repo is not to create a neovim confi
 
 * Custom language server configuration (null-ls templates)
 * Theming beyond a default colorscheme necessary for LSP highlight groups
-* Lazy-loading. Kickstart.nvim should start within 40 ms on modern hardware. Please profile and contribute to upstream plugins to optimize startup time instead.
+* Lazy-loading. Starter.nvim should start within 40 ms on modern hardware. Please profile and contribute to upstream plugins to optimize startup time instead.
 
 Each PR, especially those which increase the line count, should have a description as to why the PR is necessary.
