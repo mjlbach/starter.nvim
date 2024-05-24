@@ -36,22 +36,22 @@ require('lazy').setup({
   },
 }, {})
 
---Set highlight on search
+-- Set highlight on search
 vim.o.hlsearch = false
 
---Make line numbers default
+-- Make line numbers default
 vim.wo.number = true
 
---Enable mouse mode
+-- Enable mouse mode
 vim.o.mouse = 'a'
 
---Enable break indent
+-- Enable break indent
 vim.o.breakindent = true
 
---Save undo history
+-- Save undo history
 vim.opt.undofile = true
 
---Case insensitive searching UNLESS /C or capital in search
+-- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
@@ -64,11 +64,11 @@ vim.o.updatetime = 250
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
---Set colorscheme (order is important here)
+-- Set colorscheme (order is important here)
 vim.o.termguicolors = true
 vim.cmd.colorscheme 'onedark'
 
---Set statusbar
+-- Set statusbar
 require('lualine').setup {
   options = {
     icons_enabled = false,
@@ -78,15 +78,15 @@ require('lualine').setup {
   },
 }
 
---Enable Comment.nvim
+-- Enable Comment.nvim
 require('Comment').setup()
 
---Remap space as leader key
+-- Remap space as leader key
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
---Remap for dealing with word wrap
+-- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
@@ -100,13 +100,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
---Disable numbers in terminal mode
-require('indent_blankline').setup {
-  char = '┊',
-  filetype_exclude = { 'help' },
-  buftype_exclude = { 'terminal', 'nofile' },
-  show_trailing_blankline_indent = false,
-}
+-- Add indent guides
+require("ibl").setup({
+	indent = { char = "┊" },
+	whitespace = { remove_blankline_trail = false },
+})
 
 -- Gitsigns
 require('gitsigns').setup {
@@ -142,7 +140,7 @@ require('telescope').setup {
 -- Enable telescope fzf native
 require('telescope').load_extension 'fzf'
 
---Add leader shortcuts
+-- Add leader shortcuts
 vim.keymap.set('n', '<leader><space>', function() require('telescope.builtin').buffers { sort_lastused = true } end)
 vim.keymap.set('n', '<leader>sf', function() require('telescope.builtin').find_files { previewer = false } end)
 vim.keymap.set('n', '<leader>sb', function() require('telescope.builtin').current_buffer_fuzzy_find() end)
